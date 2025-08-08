@@ -9,6 +9,7 @@ const canvas = document.getElementById('game');
 if (!(canvas instanceof HTMLCanvasElement)) {
   throw new Error('Canvas element #game not found or is not a <canvas>');
 }
+
 // On-screen context (only composites the low-res buffer → upscaled without smoothing)
 const screenCtx = canvas.getContext('2d');
 if (!screenCtx) {
@@ -16,7 +17,7 @@ if (!screenCtx) {
 }
 
 // Offscreen low-res buffer for pixel-art look
-const PIXEL_SCALE = 1; // 2x upscale → buffer is half of logical resolution
+const PIXEL_SCALE = 1; // 1x upscale → buffer is half of logical resolution
 const buffer = document.createElement('canvas');
 const ctx = buffer.getContext('2d');
 if (!ctx) {
@@ -726,9 +727,9 @@ function drawHud() {
   ctx.fillText(String(state.best), cursorX, baselineFor(bestPx));
 
   if (!state.started) {
-    drawCenterMessage(['Toque para começar']);
+    drawCenterMessage(['Press to start']);
   } else if (state.gameOver) {
-    drawCenterMessage(['GAME OVER', 'Toque para reiniciar']);
+    drawCenterMessage(['GAME OVER', 'Press to restart']);
   }
 }
 
