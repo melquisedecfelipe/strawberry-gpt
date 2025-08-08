@@ -16,6 +16,7 @@
 
 html, body {
   height: 100%;
+  overflow: hidden !important;
 }
 
 body {
@@ -31,7 +32,6 @@ body {
   min-height: 100dvh;
   display: grid;
   grid-template-rows: 1fr auto;
-  overflow: hidden;
 }
 
 .game-frame {
